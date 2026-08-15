@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portfolio Alberto Sodré</title>
+
+<style>
+/* estrututra basica para travar o canva e montar o layout do wireframe */
+body{
+    margin: 0;
+    height: 100hv; /*ocupa exatamente 100% da altura */
+    overflow: -moz-hidden-unscrollable; /* trava a barra de rolagem do navegador*/
+    display: grid;
+    grid-template-columns: 250px 1fr auto; /* coluna do menu lateral e coluna principal*/
+    grid-template-rows: auto 1fr auto; /* altura do cabeçalho, meio (expansível) e rodapé*/
+    grid-template-areas: "header header""sidebar main""sidebar footer";
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f9;
+    }
+    /* definoção visual das áreas do wireframe */
+    header{
+        grid-area: header;
+        background: #fff;
+        padding: 20px;
+        border-bottom: 2px solid #ddd;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+    aside{
+          grid-area: sidebar;
+          background: #eaeaea;
+          padding: 20px;
+          border-right: 2px solid #ddd;
+        }
+    main{
+        grid-area: footer;
+        background: #fff;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        gap: 20px;
+        overflow: auto;
+        }
+         /* define o tamanho do iframe ou da imagem do card  */
+        .visualizacao{
+            width: 400px;
+            height: 250px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            background: #000;
+        }
+</style>
+</head>
+<body>
+    <!--campos 1 e 2: cabeçalho com titulo e contatos  -->
+    <header>
+        <div>
+            <h1>
+                Portifólio de projetos
+            </h1>
+            <h2>
+                Alberto Sodré dos Santos
+            </h2>
+        </div>
+        <div style="text-align: right;">
+            <p><strong>CPS FATEC São Sebastião</strong><br>Análise e Desenvolvimento de Sistemas</p>
+            <p><a href= https://github.com/gr4ndi09-cell target=”_blank”>Acessar GitHub</a></p>
+        </div>
+    </header>
+
+    <!-- campo 3: menu lateral ferramentas essenciais, Links e Promoções -->
+     <aside>
+        <h3>Ferramentas úteis</h3>
+        <ul style="list-style:  nome; padding: 0; line-height: 2;">
+            <li><a href="Seu link promo aqui" target="_blank">titulo da promo, ferramenta</a></li>
+            <li><a href="Seu link promo aqui" target="_blank">titulo da promo, ferramenta</a></li>
+            <li><a href="Seu link promo aqui" target="_blank">titulo da promo, ferramenta</a></li>
+            <li><a href="Seu link promo aqui" target="_blank">titulo da promo, ferramenta</a></li>
+            <li><a href="Seu link promo aqui" target="_blank">titulo da promo, ferramenta</a></li>
+            <li><a href=https://threejs.org/ target=”_blank”>Biblioteca Three.js</a></li>
+        </ul>
+     </aside>
+     <!-- campo 4: canva principal com a lista dos trabalhos -->
+      <main>
+        <!-- trab 1 : usando iframe para projeto web/3d -->
+         <article class="card-trabalho">
+            <iframe class="visualizacao" 
+                    src="https://gr4ndi09-cell.github.io/math_na_estrada/" 
+                    allowfullscreen>
+            </iframe>
+            <div>
+                <h3>Math na Estrada</h3>
+                <p><strong>Status</strong>concluido</p>
+                <p>Primeiro projeto. Proposto pelo corpo acadêmico, <br> 
+                    como parte de inserção ao ambiente de programaçãobr
+                    O objetivo foi direcionar o engajamento das metrias <br>
+                    com um projeto simples. De minha parte, achei melhorbr
+                    utilizando as linguagens de programação sem utilizarbr
+                    engines de criação de jogos. Utilizei frameworks <br>
+                    em javascript (phaser.js)</p>
+            </div>
+         </article>
+
+        <!--  trabalho 2: usando imagem para app mobile ou codigo back-end -->
+          <article class="card-trabalho">
+            
+        <article class=”card-trabalho”>
+            <img class=”visualizacao” src=”assets/images/print-offline.jpg”  alt=”Interface do aplicativo OFFline” style=”object-fit: cover;”>
+            <div>
+                <h3>OFFline</h3>
+                <p><strong>Status</strong>Descontinuado</p>
+                <p>Aplicativo focado no gerenciamento de dados móveis <br>
+                     e regras de firewall em tempo real. Desenvolvido <br>
+                     para atender necessidades específicas de <br>
+                     estabilidade de rede em dispositivos utilizados <br>
+                     na área de transportes.</p>
+            </div>
+          </article>
+      </main>
+
+     
+</body>
+</html>
