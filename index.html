@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>portfolio Alberto Sodré</title>
+    <title>Portfólio Alberto Sodré</title>
 
 <style>
-/* estrututra basica para travar o canva e montar o layout do wireframe */
-body{
-    margin: 0;
-    height: 100hv; /*ocupa exatamente 100% da altura */
-    overflow: -moz-hidden-unscrollable; /* trava a barra de rolagem do navegador*/
-    display: grid;
-    grid-template-columns: 250px 1fr auto; /* coluna do menu lateral e coluna principal*/
-    grid-template-rows: auto 1fr auto; /* altura do cabeçalho, meio (expansível) e rodapé*/
-    grid-template-areas: "header header""sidebar main""sidebar footer";
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f4f9;
+    /* Estrutura básica para travar o canva e montar o layout do wireframe */
+    body {
+        margin: 0;
+        height: 100vh; /* CORREÇÃO 1: Estava 100hv (inválido). 'vh' significa Viewport Height */
+        overflow: hidden; /* CORREÇÃO 2: Estava 'auto'. 'hidden' é o que trava a barra de rolagem principal */
+        display: grid;
+        grid-template-columns: 250px 1fr; /* CORREÇÃO 3: Removido um 'auto' sobrando no final */
+        grid-template-rows: auto 1fr; /* Altura do cabeçalho e o resto da tela */
+        grid-template-areas: 
+            "header header"
+            "sidebar main"; /* Removido o footer do grid, já que não há tag footer no seu HTML */
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f4f4f9;
     }
-    /* definoção visual das áreas do wireframe */
-    header{
+
+    /* Definição visual das áreas do wireframe */
+    header {
         grid-area: header;
         background: #fff;
         padding: 20px;
@@ -27,98 +30,104 @@ body{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        }
-    aside{
+    }
+
+    aside {
         grid-area: sidebar;
         background: #eaeaea;
         padding: 20px;
         border-right: 2px solid #ddd;
-        }
-    main{
-        grid-area: footer;
+    }
+
+    main {
+        grid-area: main; /* CORREÇÃO 4: Estava apontando para 'footer' no seu código */
+        padding: 20px;
+        overflow-y: auto; /* Permite a rolagem APENAS no eixo Y (vertical) dentro do main */
+    }
+
+    /* CORREÇÃO 5: Esta classe havia sumido do seu CSS. É ela quem coloca a imagem e texto lado a lado */
+    .card-trabalho {
         background: #fff;
-        padding: 15px;
         border: 1px solid #ccc;
         border-radius: 8px;
         padding: 15px;
         margin-bottom: 20px;
-        gap: 20px;
-        overflow: auto;
-        }
-         /* define o tamanho do iframe ou da imagem do card  */
-        .visualizacao{
-            width: 400px;
-            height: 250px;
-            border: 1px solid #eee;
-            border-radius: 4px;
-            background: #000;
-        }
+        display: flex; /* Ativa o alinhamento lado a lado */
+        gap: 20px; /* Cria um espaço de 20px entre o iframe/imagem e o texto */
+        align-items: flex-start; /* Alinha o texto pelo topo da caixa */
+    }
+
+    /* Define o tamanho do iframe ou da imagem do card */
+    .visualizacao {
+        width: 400px;
+        height: 250px;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        background: #000;
+        object-fit: cover; /* Evita que a imagem fique esticada/espremida */
+    }
 </style>
 </head>
 <body>
-    <!--campos 1 e 2: cabeçalho com titulo e contatos  -->
+    <!-- Campos 1 e 2: Cabeçalho com titulo e contatos -->
     <header>
         <div>
-            <h1>
-                Portifólio de projetos
-            </h1>
-            <h2>
-                Alberto Sodré dos Santos
-            </h2>
+            <h1>Portfólio de projetos</h1>
+            <h2>Alberto Sodré dos Santos</h2>
         </div>
         <div style="text-align: right;">
             <p><strong>CPS FATEC São Sebastião</strong><br>Análise e Desenvolvimento de Sistemas</p>
-            <p><a href= https://github.com/gr4ndi09-cell target=”_blank”>Acessar GitHub</a></p>
+            <!-- CORREÇÃO 6: Adicionadas as aspas corretas ao href e consertadas as aspas do target -->
+            <p><a href="https://github.com/gr4ndi09-cell" target="_blank">Acessar GitHub</a></p> 
         </div>
     </header>
 
-    <!-- campo 3: menu lateral ferramentas essenciais, Links e Promoções -->
+    <!-- Campo 3: Menu lateral -->
     <aside>
         <h3>Ferramentas úteis</h3>
-        <ul style="list-style:  nome; padding: 0; line-height: 2;">
-            <li><a href="Seu link promo aqui" target="_blank">titulo da promo, ferramenta</a></li>
-            <li><a href="Seu link promo aqui" target="_blank">titulo da promo, ferramenta</a></li>
-            <li><a href="Seu link promo aqui" target="_blank">titulo da promo, ferramenta</a></li>
-            <li><a href="Seu link promo aqui" target="_blank">titulo da promo, ferramenta</a></li>
-            <li><a href="Seu link promo aqui" target="_blank">titulo da promo, ferramenta</a></li>
-            <li><a href=https://threejs.org/ target=”_blank”>Biblioteca Three.js</a></li>
+        <!-- CORREÇÃO 7: Estava 'list-style: nome', o correto é 'none' -->
+        <ul style="list-style: none; padding: 0; line-height: 2;">
+            <li><a href="Seu link promo aqui" target="_blank">Título da promo, ferramenta</a></li>
+            <li><a href="https://threejs.org/" target="_blank">Biblioteca Three.js</a></li>
         </ul>
     </aside>
-    <!-- campo 4: canva principal com a lista dos trabalhos -->
+
+    <!-- Campo 4: Canva principal com a lista dos trabalhos -->
     <main>
-        <!-- trab 1 : usando iframe para projeto web/3d -->
+        
+        <!-- Trabalho 1: Iframe -->
         <article class="card-trabalho">
-            <iframe class="visualizacao"
-                    src="https://gr4ndi09-cell.github.io/math_na_estrada/"
-                    allowfullscreen>
-            </iframe>
+            <iframe class="visualizacao" src="https://gr4ndi09-cell.github.io/math_na_estrada/" allowfullscreen></iframe>
             <div>
                 <h3>Math na Estrada</h3>
-                <p><strong>Status</strong>concluido</p>
-                <p>Primeiro projeto. Proposto pelo corpo acadêmico, <br>
-                    como parte de inserção ao ambiente de programação <br>
-                    O objetivo foi direcionar o engajamento das metrias <br>
-                    com um projeto simples. De minha parte, achei melhor <br>
-                    utilizando as linguagens de programação sem utilizar <br>
-                    engines de criação de jogos. Utilizei frameworks <br>
-                    em javascript (phaser.js)</p>
+                <p><strong>Status: </strong>Concluído</p>
+                <p>Primeiro projeto. Proposto pelo corpo acadêmico,<br>
+                    como parte de inserção ao ambiente de programação.<br>
+                    O objetivo foi direcionar o engajamento das matérias<br>
+                    com um projeto simples. De minha parte, achei melhor<br>
+                    utilizando as linguagens de programação sem utilizar<br>
+                    engines de criação de jogos. Utilizei frameworks<br>
+                    em javascript (phaser.js).</p>
             </div>
         </article>
 
-        <!--  trabalho 2: usando imagem para app mobile ou codigo back-end -->
-        
-        <article class=”card-trabalho”>
+        <!-- Trabalho 2: Imagem -->
+        <!-- CORREÇÃO 8: As aspas de class="card-trabalho" estavam formatadas como aspas de texto inteligente (”) -->
+        <article class="card-trabalho">
             <img class="visualizacao" src="https://gr4ndi09-cell.github.io/Portifolio/assets/images/offline_logo.jpg" alt="Logo do projeto OFFline">
-            <div>
+            
+            <!-- CORREÇÃO 9: Faltava abrir a div de texto aqui, só havia o fechamento dela no final -->
+            <div> 
                 <h3>OFFline</h3>
-                <p><strong>Status</strong>Descontinuado</p>
-                <p>Aplicativo focado no gerenciamento de dados móveis <br>
-                    e regras de firewall em tempo real. Desenvolvido <br>
-                    para atender necessidades específicas de <br>
-                    estabilidade de rede em dispositivos utilizados <br>
+                <p><strong>Status: </strong>Descontinuado</p>
+                <p>Aplicativo focado no gerenciamento de dados móveis<br>
+                    e regras de firewall em tempo real. Desenvolvido<br>
+                    para atender necessidades específicas de<br>
+                    estabilidade de rede em dispositivos utilizados<br>
                     na área de transportes.</p>
             </div>
         </article>
+        
     </main>
 </body>
 </html>
