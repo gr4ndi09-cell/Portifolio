@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio Alberto Sodré</title>
+    <!-- Importa a biblioteca do Model Viewer do Google -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 
 <style>
     /* Estrutura básica para travar o canva e montar o layout do wireframe */
     body {
         margin: 0;
-        height: 100vh; /* CORREÇÃO 1: Estava 100hv (inválido). 'vh' significa Viewport Height */
+        height: 100vh; /* CORREÇÃO 1: Estava 100vh (inválido). 'vh' significa Viewport Height */
         overflow: hidden; /* CORREÇÃO 2: Estava 'auto'. 'hidden' é o que trava a barra de rolagem principal */
         display: grid;
         grid-template-columns: 250px 1fr; /* CORREÇÃO 3: Removido um 'auto' sobrando no final */
         grid-template-rows: auto 1fr; /* Altura do cabeçalho e o resto da tela */
-        grid-template-areas: 
+        grid-template-areas:
             "header header"
-            "sidebar main"; /* Removido o footer do grid, já que não há tag footer no seu HTML */
+            "sidebar main" /* Removido o footer do grid, já que não há tag footer no seu HTML */
+            "sidebar footer";
         font-family: Arial, Helvetica, sans-serif;
         background-color: #f4f4f9;
     }
@@ -25,7 +28,7 @@
     header {
         grid-area: header;
         background: #fff;
-        padding: 20px;
+        padding: 10px;
         border-bottom: 2px solid #ddd;
         display: flex;
         justify-content: space-between;
@@ -35,15 +38,38 @@
     aside {
         grid-area: sidebar;
         background: #eaeaea;
-        padding: 20px;
+        padding: 10px;
         border-right: 2px solid #ddd;
     }
 
     main {
-        grid-area: main; /* CORREÇÃO 4: Estava apontando para 'footer' no seu código */
-        padding: 20px;
-        overflow-y: auto; /* Permite a rolagem APENAS no eixo Y (vertical) dentro do main */
-    }
+    grid-area: main;
+    padding: 20px;
+    overflow-y: auto;
+    position: relative; /* Isso avisa aos itens absolutos que este é o limite deles */
+}
+
+.avatar-placeholder {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 150px;
+    height: 250px;
+    background: rgba(0, 0, 0, 0.1); /* Fundo sutil apenas para você ver onde está */
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    pointer-events: none; /* Permite clicar nos itens que passarem por baixo dele */
+    z-index: 100;
+}
+    footer { 
+            grid-area: footer; 
+            background: #fff; 
+            padding: 5px; 
+            border-top: 2px solid #ddd;
+            text-align: center;
+            font-size: 0.7em;
+        }
+
 
     /* CORREÇÃO 5: Esta classe havia sumido do seu CSS. É ela quem coloca a imagem e texto lado a lado */
     .card-trabalho {
@@ -109,6 +135,7 @@
                     engines de criação de jogos. Utilizei frameworks<br>
                     em javascript (phaser.js).</p>
             </div>
+            
         </article>
 
         <!-- Trabalho 2: Imagem -->
@@ -117,7 +144,7 @@
             <img class="visualizacao" src="https://gr4ndi09-cell.github.io/Portifolio/assets/images/offline_logo.jpg" alt="Logo do projeto OFFline">
             
             <!-- CORREÇÃO 9: Faltava abrir a div de texto aqui, só havia o fechamento dela no final -->
-            <div> 
+            <div>
                 <h3>OFFline</h3>
                 <p><strong>Status: </strong>Descontinuado</p>
                 <p>Aplicativo focado no gerenciamento de dados móveis<br>
@@ -127,7 +154,42 @@
                     na área de transportes.</p>
             </div>
         </article>
+        <!-- Trabalho 1: Iframe -->
+        <article class="card-trabalho">
+            <iframe class="visualizacao" src="https://gr4ndi09-cell.github.io/game_assets/" allowfullscreen></iframe>
+            <div>
+                <h3>Didatic Fighter</h3>
+                <p><strong>Status: </strong>Em construção</p>
+                <p>Evento GameJam. Proposta periódica do corpo acadêmico,<br>
+                    como parte de inserção ao ambiente de programação.<br>
+                    O objetivo é direcionar o engajamento das matérias<br>
+                    com um projeto simples. Neste novo, alem dos implementos <br>
+                    em css, utilizarei um framework para rederização em 3d <br>
+                    como é um projeto web, utilizarei o three.js.
+                </p>
+            </div>
+        </article>
+        <article class="card-trabalho"> 
+            
+    <!-- O estilo garante que o modelo ocupe a caixa inteira -->
+    <model-viewer 
+        src="assets/models/tiger.glb" 
+        auto-rotate 
+        camera-controls 
+        style="width: 100%; height: 100%; background-color: transparent;">
+    </model-viewer>
+        </article>
+
+        <!-- Placeholder do Avatar: movido para o final do main, fora do article -->
+    <div class="avatar-placeholder">
+        <!-- O avatar 3D final virá aqui depois! -->
+    </div>
         
     </main>
+    
+    <footer>
+        <p><strong>Créditos:</strong> Alguns modelos 3D utilizados nos projetos possuem licença de uso gratuito obtidos no Free3D. Ícones da interface providenciados por [Nome do Pacote de Ícones].</p>
+    </footer>
+
 </body>
 </html>
