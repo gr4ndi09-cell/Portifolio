@@ -2,26 +2,28 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale= 1.0">
     <title>Portfólio Alberto Sodré</title>
     <!-- Importa a biblioteca do Model Viewer do Google -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 
 <style>
-    model-viewer {width: 400px; height: 250px; margin: 0, auto;}
+    
+    model-viewer{width: 400px; height: 250px; margin: 0, auto;}
     /* Estrutura básica para travar o canva e montar o layout do wireframe */
     body {
-        margin: 0;
-        height: 100vh; /* CORREÇÃO 1: Estava 100vh (inválido). 'vh' significa Viewport Height */
+        margin: 1;
+         height: 100vh;  /*'vh' significa Viewport Height */
         overflow: hidden; /* CORREÇÃO 2: Estava 'auto'. 'hidden' é o que trava a barra de rolagem principal */
         display: grid;
-        grid-template-columns: 250px 1fr; /* CORREÇÃO 3: Removido um 'auto' sobrando no final */
+        grid-template-columns: 100px 1fr; /* CORREÇÃO 3: Removido um 'auto' sobrando no final */
         grid-template-rows: auto 1fr; /* Altura do cabeçalho e o resto da tela */
         grid-template-areas:
             "header header"
             "sidebar main" /* Removido o footer do grid, já que não há tag footer no seu HTML */
             "sidebar footer";
         font-family: Arial, Helvetica, sans-serif;
+        font-size: 11px;
         background-color: #f4f4f9;
     }
 
@@ -48,9 +50,11 @@
     padding: 20px;
     overflow-y: auto;
     position: relative; /* Isso avisa aos itens absolutos que este é o limite deles */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
 }
 
-.avatar-placeholder {
+    .avatar-placeholder {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -68,7 +72,9 @@
             padding: 5px; 
             border-top: 2px solid #ddd;
             text-align: center;
-            font-size: 0.7em;
+            font-size: 0.9em;
+            text-decoration-color: aquamarine;
+            
         }
 
 
@@ -105,7 +111,7 @@
         <div style="text-align: right;">
             <p><strong>CPS FATEC São Sebastião</strong><br>Análise e Desenvolvimento de Sistemas</p>
             <!-- CORREÇÃO 6: Adicionadas as aspas corretas ao href e consertadas as aspas do target -->
-            <p><a href="https://github.com/gr4ndi09-cell" target="_blank">Acessar GitHub</a></p> 
+            <p><h4><a href="mailto:gr4ndi09@hotmail.com?subject=Contato%20via%20Portfolio">alberto.santos@aluno.cps.sp.gov.br</a></h4></p> 
         </div>
     </header>
 
@@ -114,8 +120,10 @@
         <h3>Ferramentas úteis</h3>
         <!-- CORREÇÃO 7: Estava 'list-style: nome', o correto é 'none' -->
         <ul style="list-style: none; padding: 0; line-height: 2;">
-            <li><a href="Seu link promo aqui" target="_blank">Título da promo, ferramenta</a></li>
-            <li><a href="https://threejs.org/" target="_blank">Biblioteca Three.js</a></li>
+            <li><a href="https://www.meshy.ai/?utm_source=meshy&utm_medium=referral-program&utm_content=HRRTL1&share_type=invite-friends" target="_blank" ><img src="assets/images/meshy.png" width="60" alt="Meshy.AI" title="Neste link R$1 no primeiro mes, corre 😍!"></a></li>
+            <li><a href="https://threejs.org/" target="_blank"><img src="assets/images/threejs.png" width="60" alt="three.js" title="Three.js JavaScript 3D Library"></a></li>
+            <li><a href="https://github.com/gr4ndi09-cell" target="_blank" ><img src="assets/images/github.png" width="60" alt="github" title="Meu github"></a></li>
+            <li><a href="https://getbootstrap.com/" target="_blank"><img src="assets/images/bootstrap.png" width="60" alt="Bootstrap" title="Bootstrap. Powerful, extensible, and feature-packed frontend toolkit"></a></li>
         </ul>
     </aside>
 
@@ -124,7 +132,10 @@
         
         <!-- Trabalho 1: Iframe -->
         <article class="card-trabalho">
-            <iframe class="visualizacao" src="https://gr4ndi09-cell.github.io/math_na_estrada/" allowfullscreen></iframe>
+            
+            <a href="https://gr4ndi09-cell.github.io/math_na_estrada/" target="_blank">
+                <img src="https://raw.githubusercontent.com/gr4ndi09-cell/math_na_estrada/main/assets/titulo.png" width="400" height="250" alt="math_na_estrada link"></a>
+            <!-- <iframe class="visualizacao" src="https://gr4ndi09-cell.github.io/math_na_estrada/" allowfullscreen></iframe> -->
             <div>
                 <h3>Math na Estrada</h3>
                 <p><strong>Status: </strong>Concluído</p>
@@ -132,7 +143,7 @@
                     como parte de inserção ao ambiente de programação.<br>
                     O objetivo foi direcionar o engajamento das matérias<br>
                     com um projeto simples. De minha parte, achei melhor<br>
-                    utilizando as linguagens de programação sem utilizar<br>
+                    utilizar as linguagens de programação ao invés de<br>
                     engines de criação de jogos. Utilizei frameworks<br>
                     em javascript (phaser.js).</p>
             </div>
@@ -140,6 +151,7 @@
         </article>
 
         <!-- Trabalho 2: Imagem -->
+        
         <article class="card-trabalho">
             <img class="visualizacao" src="https://gr4ndi09-cell.github.io/Portifolio/assets/images/offline_logo.jpg" alt="Logo do projeto OFFline">
             
@@ -168,9 +180,9 @@
         iniciando a jornada de um novo periodo de novidades nos <br>
         projetos de PI. O anterior precisou ser substituido em <br>
         atenção ao novo requisito para alunos do centro academico. <br>
-      </p>
-      </div>
-      </article>
+    </p>
+    </div>
+</article>
         <!-- Trabalho 1: Iframe -->
         <article class="card-trabalho">
             <iframe class="visualizacao" src="https://gr4ndi09-cell.github.io/game_assets/" allowfullscreen></iframe>
@@ -181,30 +193,37 @@
                     como parte de inserção ao ambiente de programação.<br>
                     O objetivo é direcionar o engajamento das matérias<br>
                     com um projeto simples. Neste novo, alem dos implementos <br>
-                    em css, utilizarei um framework para rederização em 3d <br>
-                    como é um projeto web, utilizarei o three.js.
+                    em css, utilizarei uma biblioteca para rederização em 3d.
                 </p>
             </div>
         </article>
-        <article class="card-trabalho"> 
-                    <!-- O estilo garante que o modelo ocupe a caixa inteira -->
+        <article class="card-trabalho">
             <div>
-                <model-viewer 
-            src="assets/models/tiger.glb" 
-            alt="modelo Tiger 3D" 
-            camera-controls 
-            auto-rotate 
-            disable-zoom>
-            </model-viewer>
+                <model-viewer
+            src="assets/models/tiger.glb"
+            alt="Um modelo 3D interativo"
+            camera-controls
+            auto-rotate
+            shadow-intensity="3"
+            >
+                </model-viewer>
             </div>
             <div>
                 <h3>3D model 1</h3>
                 <p><strong>Status: </strong>Em construção</p>
-                <p>Reformulando o jogo para funcionar com o three.js</br>
-                primeiro modelo a substituir as antigas spritesheet.</br>
+                <p>Reformulando o jogo para funcionar com o three.js <br>
+                primeiro modelo a substituir as antigas spritesheet. <br>
                 Modelo criado com o Meshy.AI, otimizado com o Blender.</p>
             </div>
-         </article>
+            <div>
+                
+                    <p>
+      <label for="coment">Comentário:</label><br>
+      <textarea id="coment" name="bio" rows="2" cols="50" placeholder="Deixe o seu comentário!" maxlength="100"></textarea>
+    </p>
+                
+            </div>
+        </article>
 
         <!-- Placeholder do Avatar: movido para o final do main, fora do article -->
     <div class="avatar-placeholder">
